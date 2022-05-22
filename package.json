@@ -1,0 +1,35 @@
+{
+    "name": "crowdnest_smart_contract",
+    "version": "1.0.0",
+    "description": "Testing, compile, and deployment of the smart contract.",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha",
+        "dev": "next dev",
+        "start": "next start",
+        "build": "next build",
+        "export": "next export"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Project-Crowdnest/crowdnest_smart_contract.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Project-Crowdnest/crowdnest_smart_contract/issues"
+    },
+    "homepage": "https://github.com/Project-Crowdnest/crowdnest_smart_contract#readme",
+    "dependencies": {
+        "@truffle/hdwallet-provider": "^2.0.8",
+        "fs-extra": "^10.0.0",
+        "ganache-cli": "^6.12.2",
+        "mocha": "^9.1.2",
+        "next": "^12.1.6",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "semantic-ui-react": "^2.1.2",
+        "solc": "^0.8.13",
+        "web3": "^1.7.3"
+    }
+}
