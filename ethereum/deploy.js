@@ -1,3 +1,8 @@
+// Only this file requires the .env file because the deploy
+// will be run from a development machine.
+
+require('dotenv').config();
+
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
 const compiledFactory = require('./build/CampaignFactory.json');
