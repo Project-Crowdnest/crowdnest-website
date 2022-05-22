@@ -1,4 +1,3 @@
-// require('dotenv').config();
 // This file houses the factory contract that is already deployed
 // to the Rinkeby network. With it, we get immediate access
 // to that deployed contract.
