@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha",
-        "dev": "next dev",
+        "dev": "node server.js",
         "start": "next start",
         "build": "next build",
         "export": "next export"
@@ -27,6 +27,7 @@
         "ganache-cli": "^6.12.2",
         "mocha": "^9.1.2",
         "next": "^12.1.6",
+        "next-routes": "^1.4.2",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "semantic-ui-react": "^2.1.2",
