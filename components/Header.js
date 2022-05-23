@@ -1,18 +1,23 @@
 import React from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
-import { Router } from '../routes';
+// Link gives you the ability to 'open link in new tab'. Router does not.
+import { Link } from '../routes';
 
 const Header = (props) => {
     return (
         <Menu style={{ marginTop: '15px' }}>
-            <Menu.Item onClick={() => Router.pushRoute('/')}>Crowdnest</Menu.Item>
+            <Link route='/'>
+                <a className='item'>Crowdnest</a>
+            </Link>
 
-            <Menu.Menu position="right">
-                <Menu.Item onClick={() => Router.pushRoute('/')}>Campaigns</Menu.Item>
+            <Menu.Menu position='right'>
+                <Link route='/'>
+                    <a className='item'>Campaigns</a>
+                </Link>
 
-                <Menu.Item onClick={() => Router.pushRoute('/campaigns/new')}> 
-                    <Icon name="add circle" />
-                </Menu.Item>
+                <Link route='/campaigns/new'>
+                    <a className='item'><Icon name='add circle'/></a>
+                </Link>
             </Menu.Menu>
         </Menu>
     );

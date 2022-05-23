@@ -3,6 +3,7 @@ import factory from '../../ethereum/factory';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import web3 from '../../ethereum/web3';
+// This router is mostly used for redirects rather than manual routing.
 import { Router } from '../../routes';
 
 
