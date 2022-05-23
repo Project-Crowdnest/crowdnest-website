@@ -3,6 +3,8 @@ import factory from '../../ethereum/factory';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import web3 from '../../ethereum/web3';
+import { Router } from '../../routes';
+
 
 class CampaignNew extends React.Component {
     state = {
@@ -23,7 +25,12 @@ class CampaignNew extends React.Component {
             const weiContribution = web3.utils.toWei(this.state.minimumContribution, 'ether')
             await factory.methods
                 .createCampaign(weiContribution)
-                .send({ from: accounts[0] });
+                .send({ 
+                    from: accounts[0] 
+                });
+            
+            // Redirect user to the home page after successfully creating a campaign.
+            Router.pushRoute('/')
 
         } catch (err) {
             this.setState({ errorMessage: err.message });
