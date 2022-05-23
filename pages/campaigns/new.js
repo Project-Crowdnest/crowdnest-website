@@ -7,7 +7,8 @@ import web3 from '../../ethereum/web3';
 class CampaignNew extends React.Component {
     state = {
         minimumContribution: '',
-        errorMessage: ''
+        errorMessage: '',
+        loading: false
     }
 
     onSubmit = async (event) => {
@@ -15,6 +16,7 @@ class CampaignNew extends React.Component {
         // to the backend server. We don't want this to happen since
         // we aren't working on a traditional Client-Server website.
         event.preventDefault();
+        this.setState({ loading: true, errorMessage:'' });
         
         try {
             const accounts = await web3.eth.getAccounts();
@@ -22,9 +24,11 @@ class CampaignNew extends React.Component {
             await factory.methods
                 .createCampaign(weiContribution)
                 .send({ from: accounts[0] });
+
         } catch (err) {
             this.setState({ errorMessage: err.message });
         }
+        this.setState({ loading: false });
     };
 
     render() {
@@ -42,7 +46,7 @@ class CampaignNew extends React.Component {
                         />
                     </Form.Field>
                     <Message error header="Error" content={this.state.errorMessage} />
-                    <Button primary>Launch Campaign</Button>
+                    <Button primary loading={this.state.loading}>Launch Campaign</Button>
                 </Form>
 
 
