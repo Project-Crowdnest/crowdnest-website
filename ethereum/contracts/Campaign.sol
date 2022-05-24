@@ -27,14 +27,14 @@ contract Campaign {
         mapping(address => bool) approvals;
         
     }
-    
-    Request[] public requests;
+
     address public manager;
     uint public minimumContribution;
+    Request[] public requests;
+
     // Map of contributor addresses and whether or not have contributed
     mapping(address  => bool) public contributors;
     uint public contributorsCount;
-
 
     modifier restricted() {
         require(msg.sender == manager);
@@ -85,6 +85,20 @@ contract Campaign {
         // Send money to recipient
         request.recipient.transfer(request.value);
         request.complete = true;
+    }
+
+    function getCampaignSummary() public view returns (uint, uint, uint, uint, address) {
+        return (
+            address(this).balance, 
+            minimumContribution, 
+            requests.length, 
+            contributorsCount,
+            manager
+        );
+    }
+
+    function getRequestsCount() public view returns (uint) {
+        return requests.length;
     }
 
 }
