@@ -27,8 +27,10 @@ class CampaignNew extends React.Component {
             await factory.methods
                 .createCampaign(weiContribution)
                 .send({ 
-                    from: accounts[0] 
+                    from: accounts[0]
+                    //gas: is automatically calculated by Metamask.
                 });
+            
             
             // Redirect user to the home page after successfully creating a campaign.
             Router.pushRoute('/')
