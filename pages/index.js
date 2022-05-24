@@ -17,12 +17,13 @@ class CampaignIndex extends React.Component {
     renderCampaigns() {
         const items = this.props.campaigns.map(address => {
             return {
-                header: address,
+                header: 'Campaign name should go here',
                 description: (
                     <Link route={`/campaigns/${address}`}>
                         <a>View Campaign</a>
                     </Link>
                 ),
+                meta: address,
                 fluid: true
             };
         });

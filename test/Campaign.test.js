@@ -20,7 +20,7 @@ beforeEach(async() => {
         .send({ from: accounts[0], gas: '10000000' });
 
     // Campaign gets created.
-    await factory.methods.createCampaign('100').send({
+    await factory.methods.createCampaign('100', 'title').send({
         from: accounts[0],
         gas: '1000000'
     });

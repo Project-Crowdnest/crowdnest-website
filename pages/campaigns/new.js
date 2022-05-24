@@ -9,6 +9,7 @@ import { Router } from '../../routes';
 
 class CampaignNew extends React.Component {
     state = {
+        campaignName: '',
         minimumContribution: '',
         errorMessage: '',
         loading: false
@@ -23,9 +24,9 @@ class CampaignNew extends React.Component {
         
         try {
             const accounts = await web3.eth.getAccounts();
-            const weiContribution = web3.utils.toWei(this.state.minimumContribution, 'ether')
+            const weiMinContribution = web3.utils.toWei(this.state.minimumContribution, 'ether')
             await factory.methods
-                .createCampaign(weiContribution)
+                .createCampaign(weiMinContribution, this.state.campaignName)
                 .send({ 
                     from: accounts[0]
                     //gas: is automatically calculated by Metamask.
@@ -47,7 +48,12 @@ class CampaignNew extends React.Component {
                 <h3>Create a Campaign!</h3>
                 <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                     <Form.Field>
-                        <label>Minimum Contribution</label>
+                        <label>Campaign name</label>
+                        <Input
+                            value={this.state.campaignName}
+                            onChange={event => this.setState({ campaignName: event.target.value })}
+                        />
+                        <label>Minimum contribution</label>
                         <Input
                             label='ether'
                             labelPosition='right'
