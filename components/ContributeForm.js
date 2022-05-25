@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import web3 from '../ethereum/web3';
+import Campaign from '../ethereum/campaign';
 
 class ContributeForm extends Component {
 
@@ -13,6 +14,8 @@ class ContributeForm extends Component {
         // to the backend server. We don't want this to happen since
         // we aren't working on a traditional Client-Server website.
         event.preventDefault();
+
+        const campaign = Campaign(this.props.address);
     };
 
     render() {

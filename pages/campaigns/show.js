@@ -18,6 +18,7 @@ class CampaignShow extends Component {
 
         const summary = await campaign.methods.getCampaignSummary().call();
         return { 
+            campaignAddress: props.query.campaignAddress,
             campaignName: summary[0],
             balance: summary[1],
             minimumContribution: summary[2],
@@ -80,7 +81,7 @@ class CampaignShow extends Component {
                     </Grid.Column>
                     
                     <Grid.Column width={6}>
-                        <ContributeForm />
+                        <ContributeForm address={ this.props.campaignAddress }/>
                     </Grid.Column>
                 </Grid>
             </Layout>
