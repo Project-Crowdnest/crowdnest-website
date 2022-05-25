@@ -1,7 +1,7 @@
 // https://github.com/fridays/next-routes
 // Allows manual boot of server by EXPLICITLY telling it to use
 // the routes.js file in order to be able to use dynamic slugs
-// on our urls.
+// in our urls.
 
 const next = require('next');
 const routes = require('./routes');
