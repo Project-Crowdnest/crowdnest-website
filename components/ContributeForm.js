@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import web3 from '../ethereum/web3';
 import Campaign from '../ethereum/campaign';
+import { Router } from '../routes';
 
 class ContributeForm extends Component {
 
     state = {
         value: '',
+        errorMessage: '',
+        loading: false
     }
 
     onSubmit = async (event) => {
@@ -15,7 +18,30 @@ class ContributeForm extends Component {
         // we aren't working on a traditional Client-Server website.
         event.preventDefault();
 
+        // This Campaign is NOT a constructor. Is the campaign contract exported by
+        // campaign.js.
+        // Matches the :campaignAddress wildcard in routes.js
         const campaign = Campaign(this.props.address);
+
+        this.setState({ loading: true, errorMessage:'' });
+        
+        try {
+            const accounts = await web3.eth.getAccounts();
+            const contributionAmount = web3.utils.toWei(this.state.value, 'ether')
+            await campaign.methods
+                .contribute()
+                .send({
+                    from: accounts[0],
+                    value: contributionAmount
+                })
+                
+            // Redirect user to the home page after successfully creating a campaign.
+            Router.pushRoute(`/campaigns/${this.props.address}`);
+
+        } catch (err) {
+            this.setState({ errorMessage: err.message });
+        }
+        this.setState({ loading: false });
     };
 
     render() {
