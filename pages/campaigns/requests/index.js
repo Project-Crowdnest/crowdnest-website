@@ -8,6 +8,7 @@ class RequestIndex extends Component {
 
     static async getInitialProps(props) {
         return { 
+            // queries the address from the url
             campaignAddress: props.query.campaignAddress,
         };
     }

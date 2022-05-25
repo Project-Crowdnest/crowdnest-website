@@ -23,7 +23,7 @@ class ContributeForm extends Component {
         // This Campaign is NOT a constructor. Is the campaign contract exported by
         // campaign.js.
         // Matches the :campaignAddress wildcard in routes.js
-        const campaign = Campaign(this.props.address);
+        const campaign = Campaign(this.props.campaignAddress);
 
         this.setState({ loading: true, errorMessage:'' });
         
@@ -44,7 +44,7 @@ class ContributeForm extends Component {
             // If pushRoute was used, the page is added to the browser's entry history,
             // causing the 'back' button to show the same page twice. For this reason,
             // replaceRoute is used instead.
-            Router.replaceRoute(`/campaigns/${this.props.address}`);
+            Router.replaceRoute(`/campaigns/${this.props.campaignAddress}`);
 
         } catch (err) {
             this.setState({ errorMessage: err.message });

@@ -84,6 +84,7 @@ class CampaignShow extends Component {
                 </Link>
                 <br />
                 <h3> { this.props.campaignName } </h3>
+                <h4> Campaign address: { this.props.campaignAddress }</h4>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={10}>
@@ -91,7 +92,7 @@ class CampaignShow extends Component {
                         </Grid.Column>
                         
                         <Grid.Column width={6}>
-                            <ContributeForm address={ this.props.campaignAddress } minContribution={ this.props.minimumContribution }/>
+                            <ContributeForm campaignAddress={ this.props.campaignAddress } minContribution={ this.props.minimumContribution }/>
                         </Grid.Column>
                     </Grid.Row>
                         

@@ -32,8 +32,14 @@ class CampaignNew extends React.Component {
                     //gas: is automatically calculated by Metamask. 
                 });
             
-            // Redirect user to the home page after successfully creating a campaign.
+            
             // BIG INVESTIGATION: How to redirect to the campaign that was just created.
+            // Need to refactor the Campaign.sol contract to allow campaign IDentifier. 
+            // - Problem: What happens if multiple people try to create campaigns at the same time? 
+            // Who gets to update the campaign ID?
+            // Race conditions? 
+
+            // Redirect user to the home page after successfully creating a campaign.
             Router.pushRoute(`/`)
 
         } catch (err) {
