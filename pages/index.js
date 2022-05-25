@@ -11,22 +11,37 @@ class CampaignIndex extends React.Component {
     static async getInitialProps() {
         // getDeployedCampaigns() returns a list of addresses of all deployed campaigns
         const campaigns = await factory.methods.getDeployedCampaigns().call();
-        return { campaigns }
+        const campaignNames = await factory.methods.getCampaignNames().call();
+        
+        const zippedCampaignArrays = campaigns.map(function(e, i) {
+            return [e, campaignNames[i]];
+        });
+        // [[campaignAddress1, campaignName1],
+        //  [campaignAddress2, campaignName2],
+        //  [campaignAddress3, campaignName3],
+        //  ...]
+        return {zippedCampaignArrays};
     }
 
     renderCampaigns() {
-        const items = this.props.campaigns.map(address => {
-            return {
-                header: 'Campaign name should go here',
+        const z = this.props.zippedCampaignArrays;
+        let items = [];
+        for (let i=0; i<z.length; i++) {
+            let campaignName = z[i][1];
+            let campaignAddress = z[i][0];
+            items.push({
+                // Campaign Name
+                header: campaignName,
+                // Campaign Address
+                meta: campaignAddress,
                 description: (
-                    <Link route={`/campaigns/${address}`}>
+                    <Link route={`/campaigns/${campaignAddress}`}>
                         <a>View Campaign</a>
                     </Link>
                 ),
-                meta: address,
-                fluid: true
-            };
-        });
+                fluid: true,
+            });
+        }
         return <Card.Group items={ items } />
     }
 

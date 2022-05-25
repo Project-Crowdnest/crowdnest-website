@@ -10,7 +10,9 @@ class CampaignShow extends Component {
     // instance. With it we can make use of the wildcard we defined
     // in ./routes.js
     static async getInitialProps(props) {
-        // This matches the :campaignAddress wildcard in routes.js
+        // This Campaign is NOT a constructor. Is the campaign contract exported by
+        // campaign.js.
+        // Matches the :campaignAddress wildcard in routes.js
         const campaign = Campaign(props.query.campaignAddress);
 
         const summary = await campaign.methods.getCampaignSummary().call();
