@@ -9,6 +9,7 @@ class ContributeForm extends Component {
     state = {
         value: '',
         errorMessage: '',
+        successMessage: '',
         loading: false,
         minEtherContribution: web3.utils.fromWei(this.props.minContribution, 'ether')
     }
@@ -35,7 +36,10 @@ class ContributeForm extends Component {
                     from: accounts[0],
                     value: contributionAmount
                 })
-                
+            
+            this.setState({ successMessage: 'Contribution recorded succesfully!' });
+            this.setState({ errorMessage: '' });
+
             // This REFRESHES the page to the campaign page after successfully creating one.
             // If pushRoute was used, the page is added to the browser's entry history,
             // causing the 'back' button to show the same page twice. For this reason,
@@ -44,13 +48,20 @@ class ContributeForm extends Component {
 
         } catch (err) {
             this.setState({ errorMessage: err.message });
+            this.setState({ successMessage: '' });
         }
         this.setState({ loading: false, value: '' });
     };
 
+    onClick = (event) => {
+        this.setState({value: this.state.minEtherContribution});
+        this.setState({ successMessage: '' });
+        this.setState({ errorMessage: ''});
+    }
+
     render() {
         return (
-            <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+            <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} success={!!this.state.successMessage}>
                 <Form.Field>
                     <label>Amount to contribute</label>
                     <Input
@@ -60,7 +71,7 @@ class ContributeForm extends Component {
                         onChange={event => this.setState({ value: event.target.value })}
                     />
                     <Button 
-                        onClick={event => this.setState({value: this.state.minEtherContribution})} 
+                        onClick={this.onClick} 
                         style={{ marginTop: '5px' }} 
                         basic color='green' 
                         content={this.state.minEtherContribution}
@@ -68,7 +79,7 @@ class ContributeForm extends Component {
                     />
                 </Form.Field>
                 
-
+                <Message success header="Thank you!" content={this.state.successMessage} />
                 <Message error header="Error" content={this.state.errorMessage} />
                 <Button primary loading={ this.state.loading }>Contribute!</Button>
             </Form>
