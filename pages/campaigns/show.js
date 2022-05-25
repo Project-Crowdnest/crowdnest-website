@@ -37,30 +37,33 @@ class CampaignShow extends Component {
 
         const items = [
             {
-                header: 'Balance',
-                meta: balance,
-                description: '',
+                header: manager,
+                meta: 'Manager',
+                description: 'The manager created this campaign and can create requests to withdraw money',
+                style: { overflowWrap: 'break-word' }
             },
             {
-                header: 'Minimum Contribution',
-                meta: web3.utils.fromWei(minimumContribution, 'ether') + ' ether',
-                description: ''
+                header: web3.utils.fromWei(minimumContribution, 'ether') + ' ether',
+                meta: 'Minimum contribution',
+                description: 'You must contribute at least this much ether to become a contributor.'
             },
             {
-                header: 'Requests',
-                meta: requestsNum,
-                description: ''
+                header: requestsNum,
+                meta: 'Active requests',
+                description: 'Requests must be approved by contributors. The manager is able to finalize a request if the approval tolerance is met.'
             },
             {
-                header: 'Contributors',
-                meta: contributorsCount,
-                description: ''
+                header: contributorsCount,
+                meta: 'Contributors',
+                description: 'Number of people that have contributed to the campaign.'
             },
             {
-                header: 'Manager',
-                meta: manager,
-                description: 'The manager created this campaign and can create requests to withdraw money'
+                header: web3.utils.fromWei(balance, 'ether') + ' ether',
+                meta: 'Balance',
+                description: 'The balance is how much money this campaign has left to spend.',
             },
+        
+            
         ];
         
         return <Card.Group items={ items } />
