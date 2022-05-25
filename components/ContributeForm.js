@@ -35,8 +35,11 @@ class ContributeForm extends Component {
                     value: contributionAmount
                 })
                 
-            // Redirect user to the home page after successfully creating a campaign.
-            Router.pushRoute(`/campaigns/${this.props.address}`);
+            // This REFRESHES the page to the campaign page after successfully creating one.
+            // If pushRoute was used, the page is added to the browser's entry history,
+            // causing the 'back' button to show the same page twice. For this reason,
+            // replaceRoute is used instead.
+            Router.replaceRoute(`/campaigns/${this.props.address}`);
 
         } catch (err) {
             this.setState({ errorMessage: err.message });
