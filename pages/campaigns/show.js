@@ -78,17 +78,13 @@ class CampaignShow extends Component {
                     <Grid.Column width={10}>
                         { this.renderSummary() }
                     </Grid.Column>
-
+                    
                     <Grid.Column width={6}>
                         <ContributeForm />
                     </Grid.Column>
                 </Grid>
-                
-                
-                
-                
             </Layout>
-        )
+        );
     }
 }
 
