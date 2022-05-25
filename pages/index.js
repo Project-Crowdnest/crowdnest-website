@@ -48,6 +48,7 @@ class CampaignIndex extends React.Component {
     render() {
         return  (
             <Layout>
+                <br/>
                 <div>
                     <h3> Open Campaigns </h3>
                     <Link route='/campaigns/new'>

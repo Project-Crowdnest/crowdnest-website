@@ -9,7 +9,8 @@ class ContributeForm extends Component {
     state = {
         value: '',
         errorMessage: '',
-        loading: false
+        loading: false,
+        minEtherContribution: web3.utils.fromWei(this.props.minContribution, 'ether')
     }
 
     onSubmit = async (event) => {
@@ -58,7 +59,15 @@ class ContributeForm extends Component {
                         value={this.state.value}
                         onChange={event => this.setState({ value: event.target.value })}
                     />
+                    <Button 
+                        onClick={event => this.setState({value: this.state.minEtherContribution})} 
+                        style={{ marginTop: '5px' }} 
+                        basic color='green' 
+                        content={this.state.minEtherContribution}
+                        type='button'
+                    />
                 </Form.Field>
+                
 
                 <Message error header="Error" content={this.state.errorMessage} />
                 <Button primary loading={ this.state.loading }>Contribute!</Button>

@@ -51,11 +51,6 @@ class CampaignShow extends Component {
                 description: 'You must contribute at least this much ether to become a contributor.'
             },
             {
-                header: requestsNum,
-                meta: 'Active requests',
-                description: 'Requests must be approved by contributors. The manager is able to finalize a request if the approval tolerance is met.'
-            },
-            {
                 header: contributorsCount,
                 meta: 'Contributors',
                 description: 'Number of people that have contributed to the campaign.'
@@ -65,8 +60,11 @@ class CampaignShow extends Component {
                 meta: 'Balance',
                 description: 'The balance is how much money this campaign has left to spend.',
             },
-        
-            
+            {
+                header: requestsNum,
+                meta: 'Active requests',
+                description: 'Requests must be approved by contributors. The manager is able to finalize a request if the approval tolerance is met.'
+            },
         ];
         
         return <Card.Group items={ items } />
@@ -75,6 +73,16 @@ class CampaignShow extends Component {
     render () {
         return (
             <Layout>
+                <Link route='/'>
+                        <a>
+                            <Button
+                                content='Back to Open Campaigns'
+                                icon='arrow alternate circle left outline'
+                                floated='left'
+                             />
+                        </a>
+                </Link>
+                <br />
                 <h3> { this.props.campaignName } </h3>
                 <Grid>
                     <Grid.Row>
@@ -83,7 +91,7 @@ class CampaignShow extends Component {
                         </Grid.Column>
                         
                         <Grid.Column width={6}>
-                            <ContributeForm address={ this.props.campaignAddress }/>
+                            <ContributeForm address={ this.props.campaignAddress } minContribution={ this.props.minimumContribution }/>
                         </Grid.Column>
                     </Grid.Row>
                         
