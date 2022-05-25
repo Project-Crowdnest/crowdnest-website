@@ -5,7 +5,6 @@ import { Link } from '../../../routes';
 
 
 class RequestIndex extends Component {
-
     static async getInitialProps(props) {
         return { 
             campaignAddress: props.query.campaignAddress,
@@ -14,23 +13,19 @@ class RequestIndex extends Component {
     render() {
         return (
             <Layout>
-                <Link route={ `/campaigns/${this.props.campaignAddress}` }>
+                <Link route={ `/campaigns/${this.props.campaignAddress}/requests` }>
                         <a>
                             <Button
-                                content='Back to Campaign'
+                                content='Back to Active Requests'
                                 icon='arrow alternate circle left outline'
                                 floated='left'
                              />
                         </a>
                 </Link>
                 <br />
-                <h3>Active requests</h3>
-                <Link route={ `/campaigns/${this.props.campaignAddress}/requests/new` }>
-                    <a>
-                        <Button primary>Add Request</Button>
-                    </a>
-                </Link>
+                <h3> Adding request </h3>
             </Layout>
+            
         );
     }
 }
