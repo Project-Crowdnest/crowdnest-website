@@ -19,6 +19,7 @@ contract CampaignFactory {
     function getCampaignNames() public view returns (string[] memory) {
         return campaignNames;
     }
+
 }
 
 contract Campaign {

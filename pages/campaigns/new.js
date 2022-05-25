@@ -27,14 +27,14 @@ class CampaignNew extends React.Component {
             const weiMinContribution = web3.utils.toWei(this.state.minimumContribution, 'ether')
             await factory.methods
                 .createCampaign(weiMinContribution, this.state.campaignName)
-                .send({ 
+                .send({
                     from: accounts[0]
-                    //gas: is automatically calculated by Metamask.
+                    //gas: is automatically calculated by Metamask. 
                 });
             
-            
             // Redirect user to the home page after successfully creating a campaign.
-            Router.pushRoute('/')
+            // BIG INVESTIGATION: How to redirect to the campaign that was just created.
+            Router.pushRoute(`/`)
 
         } catch (err) {
             this.setState({ errorMessage: err.message });
