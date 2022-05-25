@@ -3,6 +3,7 @@ import { Card } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
+import ContributeForm from '../../components/ContributeForm';
 
 class CampaignShow extends Component {
     // This function its called with a props object
@@ -39,7 +40,7 @@ class CampaignShow extends Component {
             {
                 header: manager,
                 meta: 'Manager',
-                description: 'The manager created this campaign and can create requests to withdraw money',
+                description: 'This address created this campaign and is able to create requests to transfer money.',
                 style: { overflowWrap: 'break-word' }
             },
             {
@@ -73,7 +74,10 @@ class CampaignShow extends Component {
         return (
             <Layout>
                 <h3> { this.props.campaignName } </h3>
+                
                 { this.renderSummary() }
+                <ContributeForm />
+                
             </Layout>
         )
     }
