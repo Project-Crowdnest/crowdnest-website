@@ -70,10 +70,7 @@ class CampaignNew extends React.Component {
                     <Message error header="Error" content={this.state.errorMessage} />
                     <Button primary loading={this.state.loading}>Launch Campaign</Button>
                 </Form>
-
-
             </Layout>
-
         );
     }
 }
