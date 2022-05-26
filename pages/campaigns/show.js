@@ -46,7 +46,7 @@ class CampaignShow extends Component {
                 style: { overflowWrap: 'break-word' }
             },
             {
-                header: web3.utils.fromWei(minimumContribution, 'ether') + ' ether',
+                header: web3.utils.fromWei(minimumContribution, 'ether') + ' ETH',
                 meta: 'Minimum contribution',
                 description: 'You must contribute at least this much ether to become a contributor.'
             },
@@ -56,7 +56,7 @@ class CampaignShow extends Component {
                 description: 'Number of people that have contributed to the campaign.'
             },
             {
-                header: web3.utils.fromWei(balance, 'ether') + ' ether',
+                header: web3.utils.fromWei(balance, 'ether') + ' ETH',
                 meta: 'Balance',
                 description: 'The balance is how much money this campaign has left to spend.',
             },

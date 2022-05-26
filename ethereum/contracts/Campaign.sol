@@ -32,7 +32,6 @@ contract Campaign {
         uint approvalCount;
         // Map of Addresses and wether or not have voted on this request
         mapping(address => bool) approvals;
-        
     }
 
     address public manager;

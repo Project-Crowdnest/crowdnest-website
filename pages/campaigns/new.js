@@ -61,7 +61,7 @@ class CampaignNew extends React.Component {
                         />
                         <label>Minimum contribution</label>
                         <Input
-                            label='ether'
+                            label='ETH'
                             labelPosition='right'
                             value={this.state.minimumContribution}
                             onChange={event => this.setState({ minimumContribution: event.target.value })}

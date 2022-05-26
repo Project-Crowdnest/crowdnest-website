@@ -62,7 +62,7 @@ class RequestIndex extends Component {
                     </a>
                 </Link>
                 <br />
-                <h3> Adding request </h3>
+                <h3> New request </h3>
                 <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                     <Form.Field>
                         <label>Description</label>
