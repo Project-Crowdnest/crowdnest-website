@@ -62,7 +62,7 @@ class CampaignShow extends Component {
             },
             {
                 header: requestsNum,
-                meta: 'Active requests',
+                meta: 'Pending requests',
                 description: 'Requests must be approved by contributors. The manager is able to finalize a request if the approval tolerance is met.'
             },
         ];
