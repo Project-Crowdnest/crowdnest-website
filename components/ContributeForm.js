@@ -37,7 +37,7 @@ class ContributeForm extends Component {
                     value: contributionAmount
                 })
             
-            this.setState({ successMessage: 'Contribution recorded succesfully!' });
+            this.setState({ successMessage: 'Your contribution has been recorded.' });
             this.setState({ errorMessage: '' });
 
             // This REFRESHES the page to the campaign page after successfully creating one.

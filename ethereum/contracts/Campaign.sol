@@ -93,8 +93,10 @@ contract Campaign {
         require(!request.complete);
 
         // Send money to recipient
-        request.recipient.transfer(request.value);
+        // Reentrancy attack?
         request.complete = true;
+        request.recipient.transfer(request.value);
+       
     }
 
     function getCampaignSummary() public view returns (string memory, uint, uint, uint, uint, address) {

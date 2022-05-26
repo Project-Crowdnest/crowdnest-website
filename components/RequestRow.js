@@ -50,16 +50,26 @@ class RequestRow extends Component {
         // Destructuring
         const { Row, Cell } = Table;
         const { id, request, contributorsCount } = this.props
+        const readyToFinalize = ((request.approvalCount * 100) / contributorsCount) >= request.approvalTolerance;
+
         return (
-            <Row>
+            <Row disabled={request.complete} positive={readyToFinalize && !request.complete}>
                 <Cell>{ id }</Cell>
                 <Cell>{ request.description }</Cell>
                 <Cell>{ web3.utils.fromWei(request.value, 'ether') }</Cell>
                 <Cell>{ request.recipient }</Cell>
                 <Cell>{ request.approvalCount }/{ contributorsCount }</Cell>
                 <Cell>{ request.approvalTolerance }</Cell>
-                <Cell><Button color="blue" loading={this.state.loadingApprove} basic onClick={this.onApprove}>Approve</Button></Cell>
-                <Cell><Button color="green" loading={this.state.loadingFinalize} basic onClick={this.onFinalize}>Finalize</Button></Cell>
+                <Cell>
+                    {request.complete ? null : (
+                        <Button color="blue" loading={this.state.loadingApprove} basic onClick={this.onApprove}>Approve</Button>
+                    )}
+                </Cell>
+                <Cell>
+                    {request.complete ? null : (
+                        <Button color="green" loading={this.state.loadingFinalize} basic onClick={this.onFinalize}>Finalize</Button>
+                    )}
+                </Cell>
             </Row>
         );
     }
