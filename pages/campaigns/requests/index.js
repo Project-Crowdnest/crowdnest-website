@@ -25,7 +25,8 @@ class RequestIndex extends Component {
             // queries the address from the url
             campaignAddress: props.query.campaignAddress,
             campaignRequests: requests,
-            contributorsCount: contributorsCount
+            contributorsCount: contributorsCount,
+            requestsCount: requestsCount
         };
     }
 
@@ -60,7 +61,7 @@ class RequestIndex extends Component {
                 <h3>Pending requests</h3>
                 <Link route={ `/campaigns/${this.props.campaignAddress}/requests/new` }>
                     <a>
-                        <Button primary>New Request</Button>
+                        <Button primary floated='right' style={{ marginBottom: 10}}>New Request</Button>
                     </a>
                 </Link>
                 <Table>
@@ -81,6 +82,7 @@ class RequestIndex extends Component {
                     { this.renderRow() }
                     </Body>
                 </Table>
+                <div>Found {this.props.requestsCount} requests.</div>
             </Layout>
         );
     }
