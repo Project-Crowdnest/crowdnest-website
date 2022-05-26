@@ -56,8 +56,10 @@ contract Campaign {
 
     function contribute() public payable {
         require(msg.value >= minimumContribution);
-        contributors[msg.sender] = true;
-        contributorsCount++;
+        if(contributors[msg.sender] == false) {
+            contributors[msg.sender] = true;
+            contributorsCount++;
+        }
     }
 
     function createRequest(string memory _description, uint _value, address payable _recipient, uint _approvalTolerance) public restricted {

@@ -10,6 +10,7 @@ class RequestIndex extends Component {
     static async getInitialProps(props) {
         const campaign = Campaign(props.query.campaignAddress);
         const requestsCount = await campaign.methods.getRequestsCount().call();
+        const contributorsCount = await campaign.methods.contributorsCount().call();
 
         // Fancy javascript
         const requests = await Promise.all(
@@ -23,7 +24,8 @@ class RequestIndex extends Component {
         return { 
             // queries the address from the url
             campaignAddress: props.query.campaignAddress,
-            campaignRequests: requests
+            campaignRequests: requests,
+            contributorsCount: contributorsCount
         };
     }
 
@@ -35,6 +37,7 @@ class RequestIndex extends Component {
                     id={index}
                     request={request}
                     campaignAddress={this.props.campaignAddress}
+                    contributorsCount={this.props.contributorsCount}
                 />
             )
         })
