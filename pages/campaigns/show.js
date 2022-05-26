@@ -15,11 +15,12 @@ class CampaignShow extends Component {
         // This Campaign is NOT a constructor. Is the campaign contract exported by
         // campaign.js, which a replica of the campaign that exists in the blockchain.
         // Matches the :campaignAddress wildcard in routes.js
-        const campaign = Campaign(props.query.campaignAddress);
+        const campaignAddress = props.query.campaignAddress;
+        const campaign = await Campaign(campaignAddress);
 
         const summary = await campaign.methods.getCampaignSummary().call();
         return { 
-            campaignAddress: props.query.campaignAddress,
+            campaignAddress: campaignAddress,
             campaignName: summary[0],
             balance: summary[1],
             minimumContribution: summary[2],

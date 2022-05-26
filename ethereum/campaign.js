@@ -10,11 +10,13 @@ import Campaign from './build/Campaign.json';
 // which serves as a portal for React to interact with the contract.
 // This looks different from factory.js because we don't know the 
 // Campaign address beforehand. So we need to call this import with a parameter.
-export default (address) => {
-    return new web3.eth.Contract(
+export default async (address) => {
+    const contractInstance = await new web3.eth.Contract(
         Campaign.abi,
         address
-    );
+    ); 
+    
+    return contractInstance;
 };
 
 

@@ -12,7 +12,7 @@ class RequestIndex extends Component {
         value: '',
         recipient: '',
         approvalTolerance: '',
-        loading: ''
+        loading: false
     }
 
 
@@ -25,7 +25,7 @@ class RequestIndex extends Component {
 
     onSubmit = async event => {
         event.preventDefault();
-        const campaign = Campaign(this.props.campaignAddress);
+        const campaign = await Campaign(this.props.campaignAddress);
         this.setState({ loading: true, errorMessage: '' });
 
         try {

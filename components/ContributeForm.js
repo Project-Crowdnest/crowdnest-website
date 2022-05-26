@@ -23,7 +23,7 @@ class ContributeForm extends Component {
         // This Campaign is NOT a constructor. Is the campaign contract exported by
         // campaign.js.
         // Matches the :campaignAddress wildcard in routes.js
-        const campaign = Campaign(this.props.campaignAddress);
+        const campaign = await Campaign(this.props.campaignAddress);
 
         this.setState({ loading: true, errorMessage:'' });
         

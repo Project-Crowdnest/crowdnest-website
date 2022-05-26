@@ -8,7 +8,8 @@ import RequestRow from '../../../components/RequestRow';
 class RequestIndex extends Component {
 
     static async getInitialProps(props) {
-        const campaign = Campaign(props.query.campaignAddress);
+        const campaignAddress = props.query.campaignAddress;
+        const campaign = await Campaign(campaignAddress);
         const requestsCount = await campaign.methods.getRequestsCount().call();
         const contributorsCount = await campaign.methods.contributorsCount().call();
 
@@ -23,7 +24,7 @@ class RequestIndex extends Component {
 
         return { 
             // queries the address from the url
-            campaignAddress: props.query.campaignAddress,
+            campaignAddress: campaignAddress,
             campaignRequests: requests,
             contributorsCount: contributorsCount,
             requestsCount: requestsCount

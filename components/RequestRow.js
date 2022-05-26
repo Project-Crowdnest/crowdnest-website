@@ -6,8 +6,8 @@ import { Router } from '../routes';
 
 class RequestRow extends Component {
     state = {
-        loadingApprove: '',
-        loadingFinalize: '',
+        loadingApprove: false,
+        loadingFinalize: false,
         errorMessage: ''
     }
 
@@ -30,7 +30,7 @@ class RequestRow extends Component {
     }
 
     onFinalize = async () => {
-        const campaign = Campaign(this.props.campaignAddress);
+        const campaign = await Campaign(this.props.campaignAddress);
         const accounts = await web3.eth.getAccounts();
         this.setState({ loadingFinalize: true, errorMessage: ''});
 
