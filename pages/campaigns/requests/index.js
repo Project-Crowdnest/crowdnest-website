@@ -10,7 +10,8 @@ class RequestIndex extends Component {
     static async getInitialProps(props) {
         // queries the address from the url
         const { campaignAddress } = props.query;
-        const campaign = await Campaign(campaignAddress);
+        console.log(campaignAddress);
+        const campaign = Campaign(campaignAddress);
         const requestsCount = await campaign.methods.getRequestsCount().call();
         const contributorsCount = await campaign.methods.contributorsCount().call();
 
